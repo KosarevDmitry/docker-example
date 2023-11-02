@@ -1,0 +1,20 @@
+# escape=\ 
+# https://docs.docker.com/engine/reference/builder/
+FROM node:13
+ENV ARG1="abc"
+
+# print abc
+RUN echo ${ARG1:-def}
+# print def becouse ARG3 is not set
+RUN echo ${ARG3:-def}
+# print def becouse ARG1 is set
+RUN echo ${ARG1:+def}
+# print  empty string becouse ARG3 is not set
+RUN echo ${ARG3:+def}
+
+ENV abc=hello
+ENV abc=bye def=$abc
+ENV ghi=$abc
+RUN echo $def
+RUN echo $ghi
+

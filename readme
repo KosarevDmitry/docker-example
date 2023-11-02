@@ -1,0 +1,24 @@
+если внести изменения в контейнер.  остановка, start  на изменения не повлияют
+Do not confuse RUN with CMD. RUN actually runs a command and commits the result; CMD does not execute anything at build time, but specifies the intended command for the image.
+run and cmd are not interchangeable
+ENV is visible in container
+ARG vs ENV - ARG is not persisted in the final image
+
+Expose
+EXPOSE 80/tcp
+EXPOSE 80/udp
+
+ The docker network command supports creating networks for communication among containers without the need to expose or publish specific ports, because the containers connected to the network can communicate with each other over any port. For detailed information, see the overview of this feature.
+
+docker run --cidfile ~/apps/src/imagesdocker_test.cid ubuntu echo "test"
+# sudo docker create realworld-docker_api:latest --name "test456" # create new container
+# sudo docker cp da2d4b7429146fa209fea8a127:usr/src/app/temp/ ~/apps/src/images # copy
+# sudo docker rm a01fdbd9a47cc08d78caf120 
+
+# docker inspect  realworld-docker_api:latest # inspect image
+# docker inspect da2d4b7429146f209fea8a127 # inspect container
+
+sudo docker run --cidfile ~/apps/src/images/docker_test.cid ubuntu echo "test"
+
+#show only label
+docker image inspect --format='{{json .Config.Labels}}' realworld-docker_labeldemo:latest 

@@ -1,0 +1,13 @@
+ARG VERSION=latest
+FROM ubuntu
+RUN echo $VERSION 
+# make visible VERSION again
+ARG VERSION
+RUN echo $VERSION
+
+# run
+RUN ["/bin/bash", "-c", "echo hello"]
+RUN ["/bin/sh", "-c", "echo hello"]
+RUN [ "echo", "$HOME" ]
+RUN [ "sh", "-c", "echo $HOME" ]
+#RUN apt-get install calc -y

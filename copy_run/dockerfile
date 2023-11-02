@@ -1,0 +1,48 @@
+# escape=\ 
+# https://docs.docker.com/engine/reference/builder/
+FROM node:13
+ENV DIR=/usr/src/app
+WORKDIR $DIR
+# from current folder to workdir
+COPY file1 .  
+# to add bash is possible, but isn't required 
+# RUN apk add --no-cache bash
+RUN mkdir 'temp'
+#  cd is useless, doesn't work
+RUN cd 'temp'
+# created in usr/src/app
+RUN touch file4 
+# in usr/src/app/temp
+RUN touch ./temp/file5
+
+WORKDIR /usr/src/app/temp
+RUN touch file6 
+RUN printf '456\n'> file6 
+RUN  echo '456\n' >> file6
+RUN cat /usr/src/app/temp/file6
+WORKDIR /usr/src/app
+COPY . .
+#  show result override
+RUN cat /usr/src/app/temp/file6
+
+# RUN echo "app folder files" | ls /usr/src/app -R 
+
+#RUN exec 3<> /usr/src/app/temp/file6
+#RUN  echo "Roses are red" >&3
+#RUN  echo "Violets are blue" >&3
+#RUN exec 3>&-
+#RUN  echo "file6 " | cat /usr/src/app/temp/file6
+# docker exec -it test123 bash
+ 
+
+#ADD
+#COPY
+#ENV
+#EXPOSE
+#FROM
+#LABEL
+#STOPSIGNAL
+#USER
+#VOLUME
+#WORKDIR
+#ONBUILD (when combined with one of the supported instructions above)

@@ -1,0 +1,12 @@
+FROM ubuntu
+# exec form is preferrable
+# exec  form, substitutuion does not happen
+CMD [ "echo", "$HOME" ]
+# exec  form, execute shell directly, substitution happens
+CMD [ "sh", "-c", "echo $HOME" ]
+CMD ["/usr/bin/wc","--help"]
+CMD ["/usr/bin/wc","--help"]
+# shell form, execute in bin/sh -c, only this cmd take effect as it is last one
+CMD echo "This is a test."  
+# docker run realworld-docker_cmd:latest
+#If the user specifies arguments to docker run then they will override the default specified in CMD.

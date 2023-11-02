@@ -1,0 +1,16 @@
+version: '3'
+services:
+ # copy_run:
+ #   build:  ./copy_run
+ # args:
+ #   build: ./args
+ # run_arg:
+  #  build: ./run_arg
+  env:
+     build: ./env
+ # gitlab:
+ #  build: ./gitlab
+#  label:
+  #    build: ./label
+ # cmd:
+ #  build: ./cmd
