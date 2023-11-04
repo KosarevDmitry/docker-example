@@ -37,6 +37,10 @@ services:
 #    build: ./volume
 #    image: volume123:latest
   
-  healthcheck:
-    build:
-      context: ./healthcheck
+#  healthcheck:
+ #   build:
+ #     context: ./healthcheck
+      
+  shell:
+        build:
+          context: ./shell

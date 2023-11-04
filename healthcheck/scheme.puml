@@ -1,35 +1,39 @@
 ﻿@startuml
-:test start;
-:stop;
-:interval 30 sec; 
-:test start;
-:stop;
-:interval 30 sec;
-:test start;
-:stop;
-:interval 30 sec;
-
-@enduml
-
 @startuml
-@startuml
-:start period (0 sec default);
+:container is running;
+:start;
+note right
+immediately  as  <color: red>  start-period <color: black>  default 0 sec
+end note
 repeat
-:attempt
+:test;
+ note right
+ start each 5 sec as <color: red> start-interval <color:black> default 5 sec
+ repeat during <color: red> interval <color:black> default 30 sec
+end note
 repeat while
 
+
 repeat
-  :test start ... stop ;
-    if (timeout< test time) then (yes)
+  :test start ... completes or stop by timeout;
+    if (timeout?) then (yes)
    :failer++;
+   
      else (no)
   endif;
-:wait duiring interval (30 sec default);   
-repeat while (failer == retries) is (no)
+backward :wait;
+note right
+<color : red> interval<color : black>  default 30 sec
+end note
+repeat while (secuence failers == retries) is (No) not (Yes)
+if (failer?) then (Yes)
+ :Status: <color : red> unhealthy;
+ 
+else  (No)
+:Status: <color : green> healthy;
+endif
 
-->yes;
 stop
-
 
 
 @enduml
