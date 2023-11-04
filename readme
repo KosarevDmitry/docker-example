@@ -1,5 +1,7 @@
 если внести изменения в контейнер.  остановка, start  на изменения не повлияют
-Do not confuse RUN with CMD. RUN actually runs a command and commits the result; CMD does not execute anything at build time, but specifies the intended command for the image.
+
+Do not confuse RUN with CMD. RUN actually runs a command and commits the result; 
+CMD does not execute anything at build time, but specifies the intended command for the image.
 run and cmd are not interchangeable
 ENV is visible in container
 ARG vs ENV - ARG is not persisted in the final image
@@ -8,17 +10,37 @@ Expose
 EXPOSE 80/tcp
 EXPOSE 80/udp
 
- The docker network command supports creating networks for communication among containers without the need to expose or publish specific ports, because the containers connected to the network can communicate with each other over any port. For detailed information, see the overview of this feature.
+The docker network command supports creating networks for communication among containers without the need to expose or publish specific ports, because the containers connected to the network can communicate with each other over any port. For detailed information, see the overview of this feature.
+
+
+# volume list
+docker volume ls
 
 docker run --cidfile ~/apps/src/imagesdocker_test.cid ubuntu echo "test"
-# sudo docker create realworld-docker_api:latest --name "test456" # create new container
-# sudo docker cp da2d4b7429146fa209fea8a127:usr/src/app/temp/ ~/apps/src/images # copy
+# create new container
+sudo docker create realworld-docker_api:latest --name "test456" 
+# copy
+sudo docker cp da2d4b7429146fa209fea8a127:usr/src/app/temp/ ~/apps/src/images 
 # sudo docker rm a01fdbd9a47cc08d78caf120 
 
-# docker inspect  realworld-docker_api:latest # inspect image
-# docker inspect da2d4b7429146f209fea8a127 # inspect container
+# inspect image
+ docker inspect  realworld-docker_api:latest
+# inspect container 
+ docker inspect da2d4b7429146f209fea8a127 
 
+# copy cid to   ~/apps/src/images/  (UBUNTU path)  
 sudo docker run --cidfile ~/apps/src/images/docker_test.cid ubuntu echo "test"
 
 #show only label
 docker image inspect --format='{{json .Config.Labels}}' realworld-docker_labeldemo:latest 
+# working on running a container
+docker exec -it 706d762935556365aa0f5006213fa486e1ae7923e72f104334fd5a7a4bc9a0e7 ps aux 
+
+# rider docker terminal
+docker exec -it strange_lamport bash
+
+
+rider IDE command 'run dockerfile'   and 
+'rider build'   and then  'create container'
+is not the same 
+ENV  is not created. Why?

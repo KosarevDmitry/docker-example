@@ -1,0 +1,11 @@
+﻿# command in rider "run endpoint/dockerfile" is failed
+# so first "build  image " and then "create container" (+)
+FROM ubuntu
+RUN apt-get update && apt-get install -y --force-yes calc
+ENTRYPOINT ["calc"]
+CMD ["3*4"]
+# will print 12 
+
+#FROM ubuntu
+#ENTRYPOINT ["top", "-b"]
+#CMD ["-c"]

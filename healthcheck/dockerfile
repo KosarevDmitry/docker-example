@@ -1,0 +1,10 @@
+﻿FROM ubuntu
+HEALTHCHECK --interval=12s --timeout=3s \
+CMD curl -f http://localhost/ || exit 1
+# container status
+
+#--interval=DURATION (default: 30s)
+#--timeout=DURATION (default: 30s)
+# --retries=N (default: 3)
+#--start-period=DURATION (default: 0s)
+#--start-interval=DURATION (default: 5s)

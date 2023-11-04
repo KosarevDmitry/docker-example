@@ -1,0 +1,31 @@
+﻿# syntax=docker/dockerfile:1
+FROM busybox
+WORKDIR user/src/app
+# https://ss64.com/bash/chmod.html
+# https://ss64.com/bash/chown.html
+#ADD files* .
+#ADD files* somedir/
+#ADD --chown=55:mygroup files* somedir/
+# ADD --chown=bin files* somedir/
+
+#ADD --chmod=777 . somedir/
+# add only files to dir
+ADD  files* somedir/
+ADD  files* somedir1
+
+ADD  . somedir3
+# why write to somedir3 ?
+ADD  ./dir  /
+RUN touch file0
+RUN printf '456\n'> file0
+# rewrite content 
+ADD  files2 file0
+# unpacked automatically
+ADD  foo.tar unzipped/
+
+ADD --keep-git-dir=true https://github.com/KosarevDmitry/test.git /buildkit
+#ADD --chown=10:11 files* /somedir/
+#ADD --chown=myuser:mygroup --chmod=655 files* /somedir/
+# check by
+# ls -l 
+# ls -R -l

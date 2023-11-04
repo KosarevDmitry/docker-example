@@ -2,15 +2,41 @@ version: '3'
 services:
  # copy_run:
  #   build:  ./copy_run
- # args:
- #   build: ./args
+  args:
+    build:
+      context: ./args
+      args:
+        HTTPS_PROXY: https://my-proxy.example.com
  # run_arg:
   #  build: ./run_arg
-  env:
-     build: ./env
+ # env:
+ #    build: ./env
  # gitlab:
  #  build: ./gitlab
 #  label:
   #    build: ./label
  # cmd:
  #  build: ./cmd
+ # add:
+ #  build: ./add
+ 
+ # addgitrepo:
+ #   build:
+ #     context: ./addgitrepo
+ #     args:
+ #      BUILDKIT_CONTEXT_KEEP_GIT_DIR: 1
+      
+ # uptget:
+ #   build: ./uptget
+ #   image: dude:v2
+ # endpoint:
+ #   build: ./endpoint
+ #   image: atest
+
+#  volume_example:
+#    build: ./volume
+#    image: volume123:latest
+  
+  healthcheck:
+    build:
+      context: ./healthcheck

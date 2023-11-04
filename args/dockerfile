@@ -1,5 +1,6 @@
 # escape=\ 
 # https://docs.docker.com/engine/reference/builder/
+# ENV instruction always override an ARG instruction of the same name
 FROM node:13
 ENV ARG1="abc"
 
@@ -18,3 +19,59 @@ ENV ghi=$abc
 RUN echo $def
 RUN echo $ghi
 
+ARG CONT_IMG_VER
+ENV CONT_IMG_VER=${CONT_IMG_VER:-v1.0.0}
+# check dashboard tab or run ps command   
+ARG HTTP_PROXY
+ARG http_proxy
+ARG HTTPS_PROXY
+ARG https_proxy
+ARG FTP_PROXY
+ARG ftp_proxy
+ARG NO_PROXY
+ARG no_proxy
+ARG ALL_PROXY
+ARG all_proxy
+
+ARG http_proxy
+ARG HTTPS_PROXY=d
+ARG https_proxy
+ARG FTP_PROXY=f
+ARG ftp_proxy
+ARG NO_PROXY
+ARG no_proxy
+ARG ALL_PROXY
+ARG all_proxy
+ENV _PROXY=${ALL_PROXY}|${HTTP_PROXY}|${HTTPS_PROXY}|${NO_PROXY}|${FTP_PROXY}
+ 
+
+ARG TARGETPLATFORM
+ENV TARGETPLATFORM=$TARGETPLATFORM
+
+# OS component of TARGETPLATFORM
+ARG TARGETOS 
+ENV TARGETOS=$TARGETOS
+
+# architecture component of TARGETPLATFORM
+ARG TARGETARCH 
+ENV TARGETARCH=$TARGETARCH
+
+# variant component of TARGETPLATFORM
+ARG TARGETVARIANT
+ENV TARGETVARIANT=$TARGETVARIANT
+
+# platform of the node performing the build.
+ARG BUILDPLATFORM
+ENV BUILDPLATFORM=$BUILDPLATFORM
+
+# OS component of BUILDPLATFORM 
+ARG BUILDOS
+ENV BUILDOS=$BUILDOS
+
+# architecture component of BUILDPLATFORM 
+ARG BUILDARCH
+ENV BUILDARCH=$BUILDARCH 
+
+# variant component of BUILDPLATFORM
+ARG BUILDVARIANT
+ENV BUILDVARIANT=$BUILDVARIANT 

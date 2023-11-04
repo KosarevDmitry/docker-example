@@ -1,0 +1,12 @@
+﻿FROM busybox
+# It is best practice to set your WORKDIR explicitly
+WORKDIR /a
+WORKDIR b
+WORKDIR c
+RUN pwd
+# /a/b/c  
+ENV DIRPATH=/path
+ENV DIRNAME=app
+WORKDIR $DIRPATH/$DIRNAME
+RUN pwd
+# /path/app 

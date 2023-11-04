@@ -1,0 +1,35 @@
+﻿@startuml
+:test start;
+:stop;
+:interval 30 sec; 
+:test start;
+:stop;
+:interval 30 sec;
+:test start;
+:stop;
+:interval 30 sec;
+
+@enduml
+
+@startuml
+@startuml
+:start period (0 sec default);
+repeat
+:attempt
+repeat while
+
+repeat
+  :test start ... stop ;
+    if (timeout< test time) then (yes)
+   :failer++;
+     else (no)
+  endif;
+:wait duiring interval (30 sec default);   
+repeat while (failer == retries) is (no)
+
+->yes;
+stop
+
+
+
+@enduml

@@ -1,0 +1,14 @@
+﻿FROM ubuntu
+# Create Windows user in the container
+RUN adduser patrick
+# Set it for subsequent commands
+USER patrick
+# to check run 
+#docker exec -it containername bash  
+ 
+
+#FROM microsoft/windowsservercore
+## Create Windows user in the container
+#RUN net user /add patrick
+# Set it for subsequent commands
+#USER patrick

@@ -1,0 +1,26 @@
+﻿#volume content is persistent 
+#list of volume exists independently from container
+#docker volume ls
+
+FROM ubuntu
+RUN mkdir /myvol
+RUN echo "hello world" > /myvol/greeting
+VOLUME /myvol
+
+RUN mkdir /myvol1 
+RUN echo "hello world1" > /myvol1/greeting
+VOLUME /myvol1
+# discarded 
+#If any build steps change the data within the volume after it has been declared, those changes will be discarded.
+# file "greeting1"  will not be created
+RUN echo "hello world2" > /myvol1/greeting1
+
+RUN mkdir /myvol2
+RUN mkdir /myvol3
+RUN echo "hello world2" > /myvol2/greeting
+RUN echo "hello world3" > /myvol3/greeting
+
+VOLUME ["/myvol2","/myvol3"]
+
+#root@7ce55a6b0918:/# cd ./myvol && ls
+#greeting
