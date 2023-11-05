@@ -44,3 +44,9 @@ rider IDE command 'run dockerfile'   and
 'rider build'   and then  'create container'
 is not the same 
 ENV  is not created. Why?
+
+image used in reference about dockerfile
+alpine
+busybox
+ubuntu
+debian

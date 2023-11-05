@@ -41,6 +41,10 @@ services:
  #   build:
  #     context: ./healthcheck
       
-  shell:
-        build:
-          context: ./shell
+#  shell:
+#        build:
+#          context: ./shell
+  here-doc:
+    build:
+      context: ./here-documents
+  

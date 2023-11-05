@@ -1,0 +1,7 @@
+﻿# failer in Windows envirioments
+   # unknown instruction: MKDIR
+# syntax=docker/dockerfile:1
+FROM debian
+RUN <<EOT
+  mkdir -p foo/bar
+EOT
