@@ -1,0 +1,6 @@
+﻿BuildKit only supports building Linux containers.
+BuildKit is the default builder for users on Docker Desktop and Docker Engine v23.0 and later.
+
+[!https://hub.docker.com/r/docker/dockerfile]
+[!https://docs.docker.com/build/dockerfile/frontend/]
+[!https://github.com/moby/buildkit]

@@ -1,0 +1,51 @@
+# valid file name: compose.jaml / compose.jml | docker-compose.jaml | docker-compose.jml
+# version: '3' # The top-level version property is defined by the Compose Specification for backward compatibility. It is only informative.
+# https://docs.docker.com/compose/compose-file/04-version-and-name/
+name: "bubu" # appear in RepoTags prop  
+services:
+  db:
+    build: ./db
+  redis:
+   build: ./redis
+  
+  general:
+   container_name: mywebcontainer
+   hostname: myhost
+   depends_on:
+    #- copy_run
+   # - run_arg
+     db:
+       condition: service_healthy
+       restart: true
+     redis:
+       condition: service_started   
+      
+   attach: true # false - Compose does not collect service logs, until you explicitly request it to.  
+   build:
+     context: ./web
+ # blkio_config:
+   # weight: 300  # Modify the proportion of bandwidth allocated to a service relative to other services. Takes an integer value between 10 and 1000, with 500 being the default.
+   # weight_device: # Fine-tune bandwidth allocation by device. 
+   #   - path: /dev/sda #  Defines the symbolic path to the affected device.
+   #     weight: 400
+  #  device_read_bps: #Set a limit in bytes per second for read operations on a given device. 
+    # - path: /dev/sdb
+    #   rate: '12mb'
+   # device_read_iops:
+   #  - path: /dev/sdb
+   #    rate: 120
+  #  device_write_bps: #Set a limit in bytes per second for write operations on a given device. 
+   #  - path: /dev/sdb
+   #    rate: '1024k'
+  #  device_write_iops:
+  #    - path: /dev/sdb
+  #      rate: 30   
+ # cpu_count: 2 # number of usable CPUs for service container
+ # cap_add: # specifies additional container capabilities as strings. https://man7.org/linux/man-pages/man7/capabilities.7.html
+  #  - ALL
+ # cap_drop:
+ #  - NET_ADMIN # CAP_NET_ADMIN
+ #  - SYS_ADMIN # CAP_SYS_ADMIN
+ # cgroup: host # https://en.wikipedia.org/wiki/Cgroups#:~:text=cgroups%20(abbreviated%20from%20control%20groups,of%20a%20collection%20of%20processes.
+ # cgroup_parent:
+  

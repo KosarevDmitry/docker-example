@@ -1,0 +1,6 @@
+﻿# syntax=docker/dockerfile:1
+# test for writing comments purpose 
+FROM busybox
+WORKDIR user/src/app 
+
+

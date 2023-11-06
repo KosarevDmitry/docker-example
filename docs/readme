@@ -1,3 +1,8 @@
+It exists
+3 type of CLI
+2 type of setting file: dockerfile and docker-compose.yaml
+
+
 если внести изменения в контейнер.  остановка, start  на изменения не повлияют
 
 Do not confuse RUN with CMD. RUN actually runs a command and commits the result; 
@@ -50,3 +55,5 @@ alpine
 busybox
 ubuntu
 debian
+
+

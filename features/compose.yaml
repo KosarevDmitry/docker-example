@@ -1,22 +1,29 @@
-version: '3'
 services:
- # copy_run:
- #   build:  ./copy_run
-  args:
-    build:
-      context: ./args
-      args:
-        HTTPS_PROXY: https://my-proxy.example.com
- # run_arg:
-  #  build: ./run_arg
+#  copy_run:
+#    build: ./copy_run
+
+#  run_arg:
+#   build: ./run_arg
+  
+#  args:
+ #   build:
+ #     context: ./args
+
+ #     args:
+ #       HTTPS_PROXY: https://my-proxy.example.com
+
  # env:
  #    build: ./env
+ 
  # gitlab:
  #  build: ./gitlab
-#  label:
+
+# label:
   #    build: ./label
+
  # cmd:
  #  build: ./cmd
+
  # add:
  #  build: ./add
  
@@ -29,6 +36,7 @@ services:
  # uptget:
  #   build: ./uptget
  #   image: dude:v2
+
  # endpoint:
  #   build: ./endpoint
  #   image: atest
@@ -44,7 +52,12 @@ services:
 #  shell:
 #        build:
 #          context: ./shell
-  here-doc:
-    build:
-      context: ./here-documents
   
+ # here-doc: # works only with buildkit feature
+ #   build:
+ #     context: ./here-documents
+
+ # user:
+ #   build:
+ #     context: ./user
+

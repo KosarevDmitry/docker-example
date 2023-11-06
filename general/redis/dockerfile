@@ -1,0 +1,2 @@
+﻿FROM busybox
+WORKDIR user/src/app 

@@ -1,0 +1,73 @@
+﻿{
+  "Id" : "sha256:d6c147e3c0f417500c4b68f7c6aab54231116b6b77721271adc15df2050e716d",
+  "RepoTags" : [ "docker-example-here-doc:latest" ], # folder name (default) or key "name" in compose.yaml  + "-" + service name
+  "RepoDigests" : [ ], # Images only have a digest value if they were pulled from or pushed to an image registry. https://cloud.google.com/kubernetes-engine/docs/concepts/about-container-images
+  "Parent" : "",
+  "Comment" : "buildkit.dockerfile.v0",
+  "Created" : "2023-11-06T08:15:25.7603417Z",
+  "Container" : "",
+  "ContainerConfig" : {
+    "Hostname" : "",
+    "Domainname" : "",
+    "User" : "",
+    "AttachStdin" : false,
+    "AttachStdout" : false,
+    "AttachStderr" : false,
+    "Tty" : false,
+    "OpenStdin" : false,
+    "StdinOnce" : false,
+    "Env" : null,
+    "Cmd" : null,
+    "Image" : "",
+    "Volumes" : null,
+    "WorkingDir" : "",
+    "Entrypoint" : null,
+    "OnBuild" : null,
+    "Labels" : null
+  },
+  "DockerVersion" : "",
+  "Author" : "",
+  "Config" : {
+    "Hostname" : "",
+    "Domainname" : "",
+    "User" : "",
+    "AttachStdin" : false,
+    "AttachStdout" : false,
+    "AttachStderr" : false,
+    "Tty" : false,
+    "OpenStdin" : false,
+    "StdinOnce" : false,
+    "Env" : [ "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ],
+    "Cmd" : [ "bash" ],
+    "Image" : "",
+    "Volumes" : null,
+    "WorkingDir" : "",
+    "Entrypoint" : null,
+    "OnBuild" : null,
+    "Labels" : {
+      "com.docker.compose.project" : "docker-example",
+      "com.docker.compose.service" : "here-doc",
+      "com.docker.compose.version" : "2.23.0"
+    }
+  },
+  "Architecture" : "amd64",
+  "Os" : "linux",
+  "Size" : 116549154,
+  "VirtualSize" : 116549154,
+  "GraphDriver" : {
+    "Data" : {
+      "LowerDir" : "/var/lib/docker/overlay2/2cddbc534ac2525881baa013137fffc17b607c04d277bdee2e82b0240684f47f/diff",
+      "MergedDir" : "/var/lib/docker/overlay2/z1se44f5rgrcw3rf8zxy60vt3/merged",
+      "UpperDir" : "/var/lib/docker/overlay2/z1se44f5rgrcw3rf8zxy60vt3/diff",
+      "WorkDir" : "/var/lib/docker/overlay2/z1se44f5rgrcw3rf8zxy60vt3/work"
+    },
+    "Name" : "overlay2"
+  },
+  "RootFS" : {
+    "Type" : "layers",
+    "Layers" : [ "sha256:1777ac7d307bcbda4fe79323a921eda8d39d97513677ecda31b82244e7876520", "sha256:bbbeb2e69e6d927c521730fea6afd351d7adce5e99cc075517f86bad0c25b237" ]
+  },
+  "Metadata" : {
+    "LastTagTime" : "2023-11-06T08:15:25.8670474Z"
+  }
+}

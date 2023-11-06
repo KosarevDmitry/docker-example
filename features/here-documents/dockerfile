@@ -1,0 +1,11 @@
+﻿# syntax=docker/dockerfile:1
+FROM debian
+
+WORKDIR user/src/app
+RUN <<EOT
+  mkdir -p foo/bar
+EOT
+
+# if buildkit feature is not switch on, the command  fails in Windows envirioments
+   # unknown instruction: MKDIR
+ #   Docker Engine should be >= v23. Upgrade docker desktop  or include the  feature in daemon.json
