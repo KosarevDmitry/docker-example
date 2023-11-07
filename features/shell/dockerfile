@@ -1,4 +1,5 @@
 # faliled in Ubuntu
+# faliled in Ubuntu Windows container can't run on Linux machine
 FROM  mcr.microsoft.com/windows/servercore:ltsc2022
 #microsoft/windowsservercore
 
@@ -11,7 +12,12 @@ RUN powershell -command Write-Host default
 # Executed as powershell -command Write-Host hello
 SHELL ["powershell", "-command"]
 RUN Write-Host hello
+RUN New-Item -ItemType Directory C:\Example
+ADD cmdlet.ps1 c:\example\
+# RUN   cmdlet.ps1  
 
 # Executed as cmd /S /C echo hello
 SHELL ["cmd", "/S", "/C"]
 RUN echo hello
+
+
