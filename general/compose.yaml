@@ -4,13 +4,19 @@
 name: "foo" # appear in RepoTags prop if image tag doesn't exist  
 services:
   root1:
-    build: .
-    labels: # doesn't work , labels are not added https://github.com/docker/compose/issues/7242
-      com.description: "Accounting webapp"
-      come.department: "Finance"
-      come.label-with-empty-value: ""
+    build: # specification https://docs.docker.com/compose/compose-file/build/
+      context: .
+      labels: 
+        com.description: "Accounting webapp"
+        come.department: "Finance"
+        come.label-with-empty-value: ""
+      tags: #RepoTags
+        - "myimage:mytag"
+        - "registry/username/myrepos:my-other-tag"  
+      
     image: myroot
     
+  
   db:
     image:  example/db # label "com.docker.compose.project" : "foo", "RepoTags" : [ "example/db:latest" ]
     # image is pushed to registry only if it has "image" attribute
