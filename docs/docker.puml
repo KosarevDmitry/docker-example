@@ -1,0 +1,17 @@
+﻿
+@startuml
+skinparam componentStyle rectangle
+header:https://en.wikipedia.org/wiki/Docker_(software)
+(user) as u
+[docker] as d
+note top of d: CLI
+node "docker engine" as g
+note left of g: host for container
+node g  {
+    [dockerd] as e
+     note right of e: listener, persistent service
+  } 
+ u-->d
+ d-->e
+ 
+@enduml

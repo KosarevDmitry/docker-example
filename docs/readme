@@ -59,3 +59,43 @@ ubuntu
 debian
 
 
+docker
+Это заметки о docker oпределения сравнений которые мне представляются интересными важными
+definitions
+image - file, executable package. Image contains application code, libraries, tools, dependencies and other files needed to make an application run
+ примером  может служить MSI file is a Windows package that contains installation information for a particular installer, including files to be installed 
+
+dockerfile ini file fornmat wit bash syntacyces, перенос строк and so on
+
+layer  image part, have hash code, 
+each command in dockefile represent a layer.  lyers is show up in rider and desktop 
+'from ubuntu18'  is layer
+
+лучше понимать сигнатуру и результат команд, пользоваться непосредстваенно консолью
+иногда чтобы понять попробуйте  IDE Rider  Vs code  VS
+it can be useful
+
+docker inspect
+
+docker Jet Brain Rider
+IDE path: View->Tool Windows->Services
+
+'docker-compose build' or
+'docker compose build'
+is not matter
+
+minimal config 
+```docker-compose.jml in project root dir 
+version: '3'
+services: 
+  api:
+    build: ./api  
+ ```
+   
+ ``` dockerfile in api folder
+FROM node:13
+```    
+
+
+оказывается есть  open source registry service as like Docker Hub
+https://distribution.github.io/distribution/    

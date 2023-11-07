@@ -1,16 +1,31 @@
 # valid file name: compose.jaml / compose.jml | docker-compose.jaml | docker-compose.jml
-# version: '3' # The top-level version property is defined by the Compose Specification for backward compatibility. It is only informative.
+#version: '3'  # The top-level version property is defined by the Compose Specification for backward compatibility. It is only informative.
 # https://docs.docker.com/compose/compose-file/04-version-and-name/
-name: "bubu" # appear in RepoTags prop  
+name: "foo" # appear in RepoTags prop if image tag doesn't exist  
 services:
+  root1:
+    build: .
+    labels: # doesn't work , labels are not added https://github.com/docker/compose/issues/7242
+      com.description: "Accounting webapp"
+      come.department: "Finance"
+      come.label-with-empty-value: ""
+    image: myroot
+    
   db:
+    image:  example/db # label "com.docker.compose.project" : "foo", "RepoTags" : [ "example/db:latest" ]
+    # image is pushed to registry only if it has "image" attribute
     build: ./db
   redis:
-   build: ./redis
-  
+    build: 
+      context: redis # folder
+      dockerfile:  back.dockerfile # explicit designation
+  test:
+    build: https://github.com/KosarevDmitry/test.git#main:eng
+      
   general:
    container_name: mywebcontainer
    hostname: myhost
+   image: common:v123   #appear in  RepoTags prop; when a build subsection is present for a service, Compose ignores the image attribute for the corresponding service, as Compose can build an image from source.
    depends_on:
     #- copy_run
    # - run_arg
@@ -48,4 +63,6 @@ services:
  #  - SYS_ADMIN # CAP_SYS_ADMIN
  # cgroup: host # https://en.wikipedia.org/wiki/Cgroups#:~:text=cgroups%20(abbreviated%20from%20control%20groups,of%20a%20collection%20of%20processes.
  # cgroup_parent:
-  
+    # network_mode: "host"
+    # network_mode: "none"
+  # network_mode: "service: db" # connect to db

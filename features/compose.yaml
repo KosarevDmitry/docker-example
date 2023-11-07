@@ -1,6 +1,6 @@
 services:
-  copy_run:
-    build: ./copy_run
+  # copy_run:
+    # build: ./copy_run
 
 #  run_arg:
 #   build: ./run_arg
@@ -18,8 +18,8 @@ services:
  # gitlab:
  #  build: ./gitlab
 
-# label:
-  #    build: ./label
+  label:
+      build: ./label
 
  # cmd:
  #  build: ./cmd
