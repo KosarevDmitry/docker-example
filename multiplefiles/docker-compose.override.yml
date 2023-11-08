@@ -1,0 +1,5 @@
+﻿services: 
+  db:
+   environment:
+    - A2=2
+    - B2=3 # override

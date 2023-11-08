@@ -25,7 +25,7 @@ backward :wait;
 note right
 <color : red> interval<color : black>  default 30 sec
 end note
-repeat while (secuence failers == retries) is (No) not (Yes)
+repeat while (secuence failers == <color : red> retries) is (No) not (Yes)
 if (failer?) then (Yes)
  :Status: <color : red> unhealthy;
  

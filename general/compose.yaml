@@ -13,9 +13,12 @@ services:
       tags: #RepoTags
         - "myimage:mytag"
         - "registry/username/myrepos:my-other-tag"  
-      
+      target: final
+      #target: prod
     image: myroot
-    
+    ports:
+      # external: inner 
+      - 8080:80
   
   db:
     image:  example/db # label "com.docker.compose.project" : "foo", "RepoTags" : [ "example/db:latest" ]

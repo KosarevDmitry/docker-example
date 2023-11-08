@@ -1,0 +1,13 @@
+﻿services: 
+  frontend:
+    image: ubuntu
+    environment:
+      - A1=1
+       
+  backend:
+    image: hello-world
+    volumes:
+      - vlm:/db-data
+
+volumes: 
+  vlm: 

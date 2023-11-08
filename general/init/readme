@@ -1,0 +1,7 @@
+﻿The content is created "docker init"  
+local
+curl -k -X 'GET' 'http://localhost:5091/WeatherForecast'
+in image
+curl -k -X 'GET' 'http://localhost:8080/WeatherForecast'
+
+

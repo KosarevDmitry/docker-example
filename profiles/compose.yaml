@@ -1,0 +1,17 @@
+﻿services:
+  frontend:
+    image: hello-world
+    profiles: ["frontend"]
+
+  admin:
+    image: hello-world
+    depends_on:
+      - db
+    profiles:
+      - debug
+
+  backend:
+    image: hello-world
+
+  db:
+    image: hello-world

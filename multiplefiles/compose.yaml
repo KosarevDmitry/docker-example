@@ -1,0 +1,13 @@
+﻿services:
+  
+  db:
+    env_file:
+      - a.env
+      - b.env
+    image: "webapp:${TAG}"  # use .env file  by default, not from a.env, to override run   docker compose --env-file ./a.env config 
+    build:
+      context: ./db
+    environment: 
+      - A1=1
+      - B2=2
+    
