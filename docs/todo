@@ -1,0 +1,6 @@
+try separetly use keys
+docker run --name test -it debian
+docker run --name test -i debian
+docker run --name test -t debian
+
+ mount -t tmpfs none /mnt

@@ -6,6 +6,15 @@ terminal подклчен  C:\Program Files\Git\bin\bash.exe
 хотя есть еще er C:\Program Files\Git\user\bin\bash.exe
 и в system32
 
+basically if pass throuh reference
+meaning info about define keywords, 
+
+постепенно они начнут повторяться и станет легче
+значение ключевыъ слов ключей командной строки docker docker compose похожи
+проблема только в том как их протестировать и понять их природу
+
+
+
 ожно проверяться смотреть состояние и в desktop и  в  rider  
 rider компактнее но если присмотреться все показатели отображаемые в deskotop 
 в rider отражаются тоже.
