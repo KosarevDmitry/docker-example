@@ -1,0 +1,25 @@
+﻿#  Command in Uppercase is  desireble
+FROM node:13
+WORKDIR /user/src/app2
+# copy to user/src/app
+# COPY package*.json ./
+COPY testfile ./     
+# install 
+# RUN npm install
+RUN echo 'we are running some # of cool things' 
+# COPY  . . 
+# by default on my machine  
+# "Entrypoint" : [ "docker-entrypoint.sh" ]
+# PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "NODE_VERSION=13.14.0", "YARN_VERSION=1.22.4" ]
+
+RUN echo hello \
+# comment
+world 
+
+   RUN echo hello \
+# comment
+world 
+
+RUN echo "\
+     hello\
+     world"
