@@ -1,3 +1,4 @@
+# to uncomment services you test
 services:
   # copy_run:
     # build: ./copy_run

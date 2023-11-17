@@ -4,7 +4,7 @@
 FROM node:13
 ENV ARG1="abc"
 
-# print abc
+# print abc becouse ARG1 is set
 RUN echo ${ARG1:-def}
 # print def becouse ARG3 is not set
 RUN echo ${ARG3:-def}

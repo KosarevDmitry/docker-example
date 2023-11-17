@@ -33,15 +33,16 @@ docker run --rm --volumes-from data ubuntu ls -la /data  # execute the command a
  ls          List running compose projects # stopped services, with status "exited" are  not displayed, only runnig 
   
  build       Build or rebuild images of services
- create      Creates containers for a service.
- docker compose up          Create and start containers
+ create      Creates containers for a service. ( not run)
+ up          Create and start containers
+ down        Stop and remove containers, networks
 # after "up" commands works: stop rm pause unpause and so on.
 #if run just define service it needs to call docker (not compose) stop | rm  ets.  
  docker compose stop backend       Stop services 
  docker compose rm backend 
   
- run         build image, create container and run.
- down        Stop and remove containers, networks
+ run         Run a one-off command on a service
+ 
  kill        Force stop service containers.  
  rm          Removes stopped service containers
  restart     Restart service containers
@@ -62,6 +63,8 @@ docker run --rm --volumes-from data ubuntu ls -la /data  # execute the command a
  cp          Copy files/folders between a service container and the local filesystem
  scale       Scale services
  logs        View output from containers
+ docker compose logs -f -t
+ 
  top         Display the running processes
  wait        Block until the first service container stops
   

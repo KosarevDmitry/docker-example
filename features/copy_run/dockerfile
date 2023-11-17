@@ -1,5 +1,7 @@
 # escape=\ 
 # https://docs.docker.com/engine/reference/builder/
+#  relativeDir/
+# /absoluteDir/
 FROM node:13
 ENV DIR=/usr/src/app
 WORKDIR $DIR

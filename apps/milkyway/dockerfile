@@ -1,0 +1,14 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+ARG name=milkyway
+ARG csproj=${name}.csproj
+ENV ASPNETCORE_URLS=http://+:5000
+
+WORKDIR /src
+
+COPY ./src/  .
+RUN dotnet restore  $csprog
+RUN dotnet build $csprog -c Release -o /app/build
+RUN dotnet publish $csprog -c Release -o /app/publish
+
+WORKDIR /app/publish
+ENTRYPOINT ["dotnet", "milkyway.dll"]
