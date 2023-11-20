@@ -1,12 +1,16 @@
 ﻿#volume content is persistent 
 #list of volume exists independently from container
 #docker volume ls
+# you can't mount a host directory from within the Dockerfile.
+# You must specify the mountpoint when you create or run the container.
 
 FROM ubuntu
 RUN mkdir /myvol
 RUN echo "hello world" > /myvol/greeting
-VOLUME /myvol
+# When you declare volume, Docker run creates a volume which will reside in /var/lib/docker/volumes.
+VOLUME /myvol  
 
+# https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user
 RUN mkdir /myvol1 
 RUN echo "hello world1" > /myvol1/greeting
 VOLUME /myvol1
@@ -20,7 +24,7 @@ RUN mkdir /myvol3
 RUN echo "hello world2" > /myvol2/greeting
 RUN echo "hello world3" > /myvol3/greeting
 
-VOLUME ["/myvol2","/myvol3"]
+VOLUME ["/myvol2","/myvol3"] # list of volumes
 
 #root@7ce55a6b0918:/# cd ./myvol && ls
-#greeting
+

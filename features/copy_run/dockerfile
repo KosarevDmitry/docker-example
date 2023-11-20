@@ -1,6 +1,7 @@
 # escape=\ 
 # https://docs.docker.com/engine/reference/builder/
-#  relativeDir/
+# for copy command, src dir can be only  current or child dir relative to dockerfile location
+# relativeDir/
 # /absoluteDir/
 FROM node:13
 ENV DIR=/usr/src/app

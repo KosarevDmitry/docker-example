@@ -15,15 +15,15 @@ docker ps          List containers
  
 docker build     #  Build or rebuild images of services
 docker create    #  Creates containers for a service. ( not run)
-docker up        #  Create and start containers
-docker down      #  Stop and remove containers, networks
+docker compose up        #  Create and start containers
+docker compose down      #  Stop and remove containers, networks
 # after "up"  following commands work: stop rm pause unpause and so on.
   
 docker run       #  Run a one-off command on a service
  
-docker kill        # Force stop service containers.  
-docker rm         # Removes stopped service containers
-docker restart    # Restart service containers
+docker compose kill        # Force stop service containers.  
+docker compose rm         # Removes stopped service containers
+docker compose restart    # Restart service containers
  
 docker unpause    # Unpause services
 docker pause      # Pause services
@@ -38,9 +38,9 @@ docker events     # Receive real time events from containers.
 docker exec      # Execute a command in a running container.
 
 #docker exec -it MyContainer1 mkdir "/var/opt/mssql/backup" 
-docker port    #  Print the public port for a port binding.
+docker compose port    #  Print the public port for a port binding.
 
-docker cp      # Copy files/folders between a service container and the local filesystem
+docker  cp      # Copy files/folders between a service container and the local filesystem
    #Example
 #https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-configure?view=sql-server-ver16&pivots=cs1-bash
 docker cp <Container ID>:<Container path> <host path>

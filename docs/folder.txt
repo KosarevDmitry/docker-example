@@ -1,0 +1,6 @@
+﻿What is the best  folder for app?
+usr/src
+usr/src/app
+apps/
+src/apps
+src/
