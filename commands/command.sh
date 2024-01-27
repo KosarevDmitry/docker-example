@@ -6,9 +6,11 @@ Docker compose version v2.4.1
 # https://hub.docker.com/u/microsoft
 # manual https://docs.docker.com/get-started/02_our_app/
 # dockerfile content
+
+# https://blog.diogomonica.com//2017/03/27/why-you-shouldnt-use-env-variables-for-secret-data/   post of former security employer of docker
+
 ``` 
 # syntax=docker/dockerfile:1
-    
        FROM   node:18-alpine
        WORKDIR /app
        # copy dir content
@@ -37,8 +39,83 @@ docker stop <the-container-id>
 docker rm <the-container-id>
 docker tag getting-started er2435341q/getting-started # Docker tag name newname, er2435341q my Docker Id
 docker push er2435341q/getting-started:latest #  latest is default 
- docker build --platform linux/amd64 -t er2435341q/getting-started . #  created new image with another platform type 
-docker run -dp 0.0.0.0:3000:3000 er2435341q/getting-started # command  for https://labs.play-with-docker.com/
+docker build --platform linux/amd64 -t er2435341q/getting-started . #  created new image with another platform type 
+docker run -dp 0.0.0.0:3000:3000 er2435341q/getting-started # command  for https://labs.play-with-docker.com/  dp - detach background
+docker run -d ubuntu bash -c "shuf -i 1-10000 -n 1 -o /data.txt && tail -f /dev/null" # /dev/null is a null device file, thst will discard anything written to it, and will return EOF on reading.
+docker exec <container-id> cat /data.txt # run command inside container
+docker run -it ubuntu ls /  # -it For interactive processes (like a shell), ls e
+docker volume create todo-db # create volume with sqllite db
+docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started # attach  volume. this  mount type is called "volume mount"  
+docker volume inspect todo-db
+docker run -it --mount type=bind,src="$(pwd)",target=/src ubuntu bash
+docker run -it --mount "type=bind,src=%cd%,target=/src" ubuntu bash #Windows cmd; at first cd  any dir  witch you like (working directorys) then run  the command; powershell or linux script, see at https://docs.docker.com/get-started/06_bind_mounts/
+cd /src # inside container
+ls # file and folder list
+#ctrl+D stop bash session
+docker run -dp 127.0.0.1:3000:3000 `
+    -w /app --mount "type=bind,src=$pwd,target=/app" `
+    node:18-alpine `
+    sh -c "yarn install && yarn run dev"
+ # -w /app working dir node:18-alpine;  package.json start  "dev": "nodemon -L src/index.js" ; 
+# when Nodemon detects a change, it restarts the app inside the container automatically; bind mount type. Maunt to folder  
+docker logs e63bd12ac223 #  log 'Using sqlite database at /etc/todos/todo.db' from src/persistence/sqlite.js
+
+
+docker build -t getting-started .
+docker run -dp 127.0.0.1:3001:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+docker network create todo-app #
+docker network --help
+docker network ls
+# powershell volume created -v automatically
+docker run -d `
+    --network todo-app --network-alias mysql `
+    -v todo-mysql-data:/var/lib/mysql `
+    -e MYSQL_ROOT_PASSWORD=secret `
+    -e MYSQL_DATABASE=todos `
+    mysql:8.0
+
+
+docker exec -it 3277905b30bc mysql -u root -p  # enter to mysql shell
+SHOW DATABASES;
+
+exit  #mysql shell exit
+docker run -it --network todo-app nicolaka/netshoot
+dig mysql # choose by network-alias What means A record?
+
+# remove all containers beside mysql and nicolaka/netshoot 
+docker run -dp 127.0.0.1:3000:3000 `
+  -w /app -v "$(pwd):/app" `
+  --network todo-app `
+  -e MYSQL_HOST=mysql `
+  -e MYSQL_USER=root `
+  -e MYSQL_PASSWORD=secret `
+  -e MYSQL_DB=todos `
+  node:18-alpine `
+  sh -c "yarn install && yarn run dev"
+
+
+docker logs -f 13b7aea88852 # -f follow log output
+docker exec -it 3277905b30bc mysql -p todos # password secret
+#"mysql> select * from todo_items;
+
+# create compose.yaml
+docker compose up -d    # -d detached  -f flag follows the log, so will give you live output as it's generated.
+# docker compose logs -f   # log 
+# docker compose logs -f getting-started-app-mysql-1 # log the single service 
+docker-compose config # show content compose file
+docker compose images # used images
+docker compose down # stop service except volume
+docker compose down --volumes stop including volume too
+docker image history getting-started #  Each of the lines  in represents a layer in the image. T
+docker image history --no-trunc getting-started # no truncated log 
+
+# if  add .dockerignore  with node_modules for escape dependency recreation, work better docker build -t getting-started .
+
+
+
+
+#------------------------
+
 docker pull
 docker restart
 docker передать скрипт
