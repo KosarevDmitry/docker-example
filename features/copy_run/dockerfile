@@ -17,16 +17,17 @@ RUN cd 'temp'
 RUN touch file4 
 # in usr/src/app/temp
 RUN touch ./temp/file5
-
+# create folder app1-example and copy file app-example.csproj
+COPY ["app/app-example.csproj", "app1-example/"]
 WORKDIR /usr/src/app/temp
 RUN touch file6 
 RUN printf '456\n'> file6 
 RUN  echo '456\n' >> file6
 RUN cat /usr/src/app/temp/file6
 WORKDIR /usr/src/app
-COPY . .
-#  show result override
-RUN cat /usr/src/app/temp/file6
+#COPY . .
+#  displays the result overiding
+#RUN cat /usr/src/app/temp/file6
 
 # RUN echo "app folder files" | ls /usr/src/app -R 
 

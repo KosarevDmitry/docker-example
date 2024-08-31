@@ -1,1 +1,2 @@
-﻿docker compose build
+﻿#!/usr/bin/env bash
+docker compose build
